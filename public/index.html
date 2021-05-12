@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="sk">
+  <head>
+    <base href="/assignments-2021/streda-9_10/wt1-4925/" />
+    <meta charset="UTF-8" />
+    <title>YouTube Trending</title>
+    <link rel="shortcut icon" type="image/png" href="fig/logo.jpg" />
+    <link rel="stylesheet" href="css/screenStyle.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="./css/printStyle.css" rel="stylesheet" media="print" />
+  </head>
+  <body>
+    <h1 class="mid">Youtube Trending</h1>
+    <div class="menu">
+      <button id="menuTitle">Menu</button>
+
+      <nav id="menuIts" class="menu mnHide">
+        <a href="#welcome">Welcome!</a>
+        <a href="#articles">Articles</a>
+        <a href="#opinions">Visitor opinions</a>
+        <a href="#addOpinion">Add your opinion</a>
+      </nav>
+    </div>
+    <script id="template-welcome" type="text/template">
+      <article>
+    <p class="forFirstArt" id="dek2">
+      When it comes to online video sharing, YouTube is, without a doubt, the
+      ultimate destination. The platform has established itself as a peerless
+      social media website where modern video culture unfolds daily. Because of
+      this, marketers have turned to YouTube to build brand relevancy and spur
+      their video marketing strategies. However, positive results have been hard
+      to come by, especially for marketers who are not abreast of key YouTube
+      trends.
+    </p>
+    <p id="dek1" class="bottom">
+      The site is filled with interesting content, starting with what YouTube
+      trends are and ending with what will be in trends for the coming year.
+    </p>
+  </article>
+</script>
+<script id="template-articles" type="text/template">
+  <article  id="artPine">
+    <div class="backgroundsArticles">
+      <h3>
+        <a href="article1.html" class="not-active"
+          >How to get into YouTube trends?</a
+        >
+      </h3>
+      <h3>
+        <a href="article2.html" class="not-active">Who is trending now?</a>
+      </h3>
+      <h3>
+        <a href="article3.html" class="not-active"
+          >YouTube Trends for 2021/2022?</a
+        >
+      </h3>
+    </div>
+  </article>
+</script>
+
+    <script id="template-addOpinion" type="text/template">
+        <article  id="artOpnFrm">
+        <section class="container">
+          <form id="opnFrm">
+            <p>Your gender:</p>
+            <div class="lol">
+              <input type="radio" id="male" name="gender" value="male" />
+              <label for="gender">Male</label>
+              <input type="radio" id="female" name="gender" value="female" />
+              <label for="gender">Female</label>
+            </div>
+            <ul class="flex-outer">
+              <li>
+                <label for="name">Name</label>
+                <input
+                  type="text"
+                  id="name"
+                  placeholder="Enter your name here"
+                  required
+                />
+              </li>
+              <li>
+                <label for="email">Email</label>
+                <input
+                  type="email"
+                  id="email"
+                  placeholder="Enter your email here"
+                  required
+                />
+              </li>
+              <li>
+                <label for="url">Url</label>
+                <input
+                  type="url"
+                  id="url"
+                  placeholder="https://example.com"
+                  size="30"
+                />
+              </li>
+              <li>
+                <label for="message">Message</label>
+                <textarea
+                  rows="6"
+                  id="message"
+                  placeholder="Enter your message here"
+                  required
+                ></textarea>
+              </li>
+              <label for="occupationСhoice">Your occupation</label>
+              <input
+                list="occupationFlavors"
+                id="occupationСhoice"
+                name="occupationСhoice"
+              />
+
+              <datalist id="occupationFlavors">
+                <option value="Kid"></option>
+                <option value="Student"></option>
+                <option value="Employee"></option>
+                <option value="Retiree"></option>
+              </datalist>
+
+              <p></p>
+
+              <label for="markSite">Did you like the article:</label>
+              <select id="markSite">
+                <option value="">--Please choose an option--</option>
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
+                <option value="sawBetter">Saw better</option>
+              </select>
+              <li>
+                Do you want to receive the newsletter?
+                <ul class="flex-inner"">
+                  <li>
+                    <input type="checkbox" id="cell" />
+                    <label for="cell"></label>
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <button type="submit">Submit</button>
+                <button type="reset">Reset</button>
+              </li>
+            </ul>
+          </form>
+        </section>
+      </article>
+    </script>
+
+   
+
+    <div class="opnClass"></div>
+    <div id="opContainer"></div>
+    <div id="target"></div>
+
+    <script id="template-opinions" type="text/template">
+    <article  id="artOpinions">
+      <h1 class="top">Visitors</h1>
+    <script id="template" type="text/template">
+      {{#data}}
+      <section id="visitors">
+          <h3>{{name}} <i>{{created}}</i></h3>
+          <img id="imag" src="{{url}}" alt="url">
+          <p>{{message}}</p>
+          <p>{{gender}}</p>
+          <p>{{email}}</p>
+          <p>{{occupationСhoice}}</p>
+          <p>{{markSite}}</p>
+          <p>{{cell}}</p>
+      </section>
+      {{/data}}
+    </script>
+  </article>
+</script>
+
+    <script type="module" src="./js/indexFormStorageMustache.js"></script>
+
+    <h4 class="top">Сreator - Yevhenii</h4>
+    <h4>
+      Email -
+      <a href="mailto:yevhenii.tkachenko@student.tuke.sk" class="mail"
+        >yevhenii.tkachenko@student.tuke.sk</a
+      >
+    </h4>
+    <canvas id="cnv" width="200" height="200"
+      >Sorry, your browser cannot upload this art :(</canvas
+    >
+    <div class="transition">
+      <script>
+        const cnv = document.getElementById("cnv");
+        const ctx = cnv.getContext("2d");
+
+        ctx.lineWidth = 10;
+        ctx.lineJoin = "round";
+        ctx.beginPath();
+        ctx.strokeStyle = "red";
+        ctx.fillStyle = "red";
+        ctx.moveTo(20, 20);
+        ctx.lineTo(20, 80);
+        ctx.lineTo(160, 80);
+        ctx.lineTo(160, 20);
+        ctx.closePath();
+        ctx.fill();
+        ctx.stroke();
+        ctx.beginPath();
+        ctx.fillStyle = "white";
+        ctx.moveTo(80, 50);
+        ctx.lineTo(95, 65);
+        ctx.lineTo(95, 35);
+        ctx.fill();
+      </script>
+    </div>
+  </body>
+</html>

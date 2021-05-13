@@ -481,6 +481,14 @@ div {
   color: white;
 }
 
+.hiddenElm {
+  display: none;
+}
+
+.showElm {
+  display: block;
+}
+
 @media (max-width: 800px) {
   body {
     font-size: 100%;

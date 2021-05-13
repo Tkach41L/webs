@@ -12,7 +12,6 @@ function renderUserInfo(googleUser, htmlElmId) {
                 <li>  Email: ${profile.getEmail()}
             </ul>
         `;
-  //Id z profile.getId() sa nema pouzivat na komunikaciu s vlastnym serverom (you should not use the id from profile.getId() for communication with your server)
   document.getElementById(htmlElmId).innerHTML = htmlStringEn;
 }
 
@@ -40,10 +39,8 @@ function userChanged(user) {
   const userInfoElm = document.getElementById("userStatus");
   const userNameInputElm = document.getElementById("name");
   if (userNameInputElm) {
-    // pre 82GoogleAccessBetterAddArt.html
     userNameInputElm.value = user.getBasicProfile().getName();
   } else if (userInfoElm) {
-    // pre/for 82GoogleAccessBetter.html
     renderUserInfo(user, "userStatus");
   }
 }
@@ -65,7 +62,6 @@ function updateSignIn() {
   const userInfoElm = document.getElementById("userStatus");
   const userNameInputElm = document.getElementById("name");
   if (userNameInputElm) {
-    // pre/for 82GoogleAccessBetterAddArt.html
     if (sgnd) {
       userNameInputElm.value = auth2.currentUser
         .get()
@@ -75,7 +71,6 @@ function updateSignIn() {
       userNameInputElm.value = "";
     }
   } else if (userInfoElm) {
-    // pre/for 82GoogleAccessBetter.html
     if (sgnd) {
       renderUserInfo(auth2.currentUser.get(), "userStatus");
     } else {
@@ -94,16 +89,13 @@ function startGSingIn() {
       onsuccess: onSuccess,
       onfailure: onFailure,
     });
-    gapi.auth2.init().then(
-      //zavolat po inicializácii OAuth 2.0  (called after OAuth 2.0 initialisation)
-      function () {
-        console.log("init");
-        auth2 = gapi.auth2.getAuthInstance();
-        auth2.currentUser.listen(userChanged);
-        auth2.isSignedIn.listen(updateSignIn);
-        auth2.then(updateSignIn); //tiez po inicializacii (later after initialisation)
-      }
-    );
+    gapi.auth2.init().then(function () {
+      console.log("init");
+      auth2 = gapi.auth2.getAuthInstance();
+      auth2.currentUser.listen(userChanged);
+      auth2.isSignedIn.listen(updateSignIn);
+      auth2.then(updateSignIn);
+    });
   });
 }
 

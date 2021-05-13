@@ -79,22 +79,18 @@
               <br>
               <label for="title">Názov / Title:</label>
               <input type="text" name="title" id="title" size="50"  maxlength="100" pattern="\S[\S\s]*" required title="Názov článku, povinná položka, maximálna dĺžka: 100 znakov, prvý znak nesmie byť medzera (Article title, mandatory item, max. length: 100 characters, the first character must not be a space)." placeholder="napr. Môj prvý príbeh / e.g. My story." />
-              <!--
-              \s =  match any white space character
-              \S =  match any non-white space character
-              -->
               <br>
               <label for="imageLink">Obrázok / Image (url):</label>
-              <input type="url" name="imageLink" id="imageLink" size="50" title="URL obrázka. Maximálna dĺžka: 100 znakov (image URL, max. length 100 characters)." maxlength="100"/>
+              <input type="url" name="imageLink" size="50" title="URL obrázka. Maximálna dĺžka: 100 znakov (image URL, max. length 100 characters)." maxlength="100"/>
               <br>
-              <label></label><button type="button" id="btShowFileUpload">Nahraj obrázok / Upload image</button>
+              <label></label><button type="button">Nahraj obrázok / Upload image</button>
 
-                  <fieldset class="added hiddenElm" id="fsetFileUpload">
+                  <fieldset>
                       <legend>Nahranie obrázka / Image Upload</legend>
                       <input type="file" id="flElm" name="file" accept="image/jpeg, image/png"/>
                       <br />
-                      <button type="button" id="btFileUpload">Odošli obrázok na server / Send image to server</button>
-                      <button type="button" id="btCancelFileUpload">Zruš nahrávanie / Cancel uploading</button>
+                      <button type="button">Odošli obrázok na server / Send image to server</button>
+                      <button type="button">Zruš nahrávanie / Cancel uploading</button>
                   </fieldset>
 
 
@@ -120,9 +116,6 @@
       </article>
     </script>
 
-    
-      <!--<footer  class="menuLink"><a href="#welcome">Back to the menu</a></footer>
-      -->
     </script>
     <script id="template-articles-error" type="text/template">
 
@@ -247,15 +240,13 @@
           <a href="{{backLink}}" class="linkAsButton"><< Back</a>
           <a href="{{editLink}}" class="linkAsButton">Edit</a>
           <a href="{{deleteLink}}" class="linkAsButton">Delete</a>
-          <a href="#menuTitle" class="linkAsButton">Up to the menu</a>
+          <a href="#top" class="linkAsButton">Up to the menu</a>
       </footer>
     </script>
 
     <script id="template-article-form" type="text/template">
       <article class="artMid">
           <h2>{{formTitle}}</h2> <br><br>
-
-          <!--<form id="articleForm" onsubmit="return {{formSubmitCall}}">-->
           <form id="articleForm">
               <label for="author">Author:</label>
               <input type="text" name="author" id="author" value="{{author}}" size="50"
@@ -272,15 +263,15 @@
                      title="Image URL, max. length 100 characters." maxlength="100"/>
               <br>
               <label></label>
-              <button type="button" id="btShowFileUpload" onclick="showFileUpload()">Upload image</button>
+              <button type="button" onclick="showFileUpload()">Upload image</button>
 
-              <fieldset class="added hiddenElm" id="fsetFileUpload">
+              <fieldset id="fsetFileUpload">
                   <legend>Image Upload</legend>
                   <input type="file" id="flElm" name="file" accept="image/jpeg, image/png"/>
                   <br />
-                  <button type="button" id="btFileUpload" onclick="uploadImg('{{urlBase}}')">
+                  <button type="button" onclick="uploadImg('{{urlBase}}')">
                       Send image to server </button>
-                  <button type="button" id="btCancelFileUpload" onclick="cancelFileUpload()">
+                  <button type="button" onclick="cancelFileUpload()">
                       Cancel uploading </button>
               </fieldset>
 
@@ -306,7 +297,7 @@
 
       <footer class="artMid">
           <a href="{{backLink}}" class="linkAsButton"><< Back</a>
-          <a href="#menuTitle" class="linkAsButton">Up to the menu</a>
+          <a href="#top" class="linkAsButton">Up to the menu</a>
       </footer>
     </script>
 

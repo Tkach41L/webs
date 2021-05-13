@@ -1,17 +1,9 @@
-// /*
-//  * routes definition and handling for paramHashRouter
-//  */
 import Mustache from "./mustache.js";
-// import processOpnFrmData from "./addOpinion.js";
 
-//an array, defining the routes
 export default [
   {
-    //the part after '#' in the url (so-called fragment):
     hash: "welcome",
-    ///id of the target html element:
     target: "router-view",
-    //the function that returns content to be rendered to the target html element:
     getTemplate: (targetElm) =>
       (document.getElementById(targetElm).innerHTML =
         document.getElementById("template-welcome").innerHTML),
@@ -149,22 +141,6 @@ function fetchAndDisplayArticleDetail(
 ) {
   fetchAndProcessArticle(...arguments, false);
 }
-
-/**
- * Gets an article record from a server and processes it to html according to
- * the value of the forEdit parameter. Assumes existence of the urlBase global variable
- * with the base of the server url (e.g. "https://wt.kpi.fei.tuke.sk/api"),
- * availability of the Mustache.render() function and Mustache templates )
- * with id="template-article" (if forEdit=false) and id="template-article-form" (if forEdit=true).
- * @param targetElm - id of the element to which the acquired article record
- *                    will be rendered using the corresponding template
- * @param artIdFromHash - id of the article to be acquired
- * @param offsetFromHash - current offset of the article list display to which the user should return
- * @param totalCountFromHash - total number of articles on the server
- * @param forEdit - if false, the function renders the article to HTML using
- *                            the template-article for display.
- *                  If true, it renders using template-article-form for editing.
- */
 
 function editArticle(
   targetElm,

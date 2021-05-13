@@ -1,8 +1,3 @@
-/*!
- * mustache.js - Logic-less {{mustache}} templates with JavaScript
- * http://github.com/janl/mustache.js
- */
-
 var objectToString = Object.prototype.toString;
 var isArray =
   Array.isArray ||

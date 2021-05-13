@@ -2,35 +2,22 @@ let auth2 = {};
 
 function renderUserInfo(googleUser, htmlElmId) {
   const profile = googleUser.getBasicProfile();
-  const htmlStringSk = `
-            <p>Používateľ prihlásený</p>
-            <ul>
-                <li> ID: ${profile.getId()}
-                <li>  Plné meno: ${profile.getName()}
-                <li>  Krstné meno: ${profile.getGivenName()}
-                <li>  Priezvisko: ${profile.getFamilyName()}
-                <li>  URL obrázka: ${profile.getImageUrl()}
-                <li>  Email: ${profile.getEmail()}
-            </ul>
-        `;
+
   const htmlStringEn = `
             <p>User logged in.</p>
             <ul>
                 <li> ID: ${profile.getId()}
                 <li>  Full name: ${profile.getName()}
-                <li>  Given name: ${profile.getGivenName()}
-                <li>  Family name: ${profile.getFamilyName()}
                 <li>  Image URL: ${profile.getImageUrl()}
                 <li>  Email: ${profile.getEmail()}
             </ul>
         `;
   //Id z profile.getId() sa nema pouzivat na komunikaciu s vlastnym serverom (you should not use the id from profile.getId() for communication with your server)
-  document.getElementById(htmlElmId).innerHTML = htmlStringSk + htmlStringEn;
+  document.getElementById(htmlElmId).innerHTML = htmlStringEn;
 }
 
 function renderLogOutInfo(htmlElmId) {
   const htmlString = `
-                <p>Používateľ nie je prihlásený</p>
                 <p>User not signed in</p>
                 `;
   document.getElementById(htmlElmId).innerHTML = htmlString;
@@ -51,14 +38,13 @@ function userChanged(user) {
     .getName();
 
   const userInfoElm = document.getElementById("userStatus");
-  const userNameInputElm = document.getElementById("author");
-
-  if (userInfoElm) {
-    // pre/for 82GoogleAccessBetter.html
-    renderUserInfo(user, "userStatus");
-  } else if (userNameInputElm) {
+  const userNameInputElm = document.getElementById("name");
+  if (userNameInputElm) {
     // pre 82GoogleAccessBetterAddArt.html
     userNameInputElm.value = user.getBasicProfile().getName();
+  } else if (userInfoElm) {
+    // pre/for 82GoogleAccessBetter.html
+    renderUserInfo(user, "userStatus");
   }
 }
 
@@ -77,16 +63,8 @@ function updateSignIn() {
   }
 
   const userInfoElm = document.getElementById("userStatus");
-  const userNameInputElm = document.getElementById("author");
-
-  if (userInfoElm) {
-    // pre/for 82GoogleAccessBetter.html
-    if (sgnd) {
-      renderUserInfo(auth2.currentUser.get(), "userStatus");
-    } else {
-      renderLogOutInfo("userStatus");
-    }
-  } else if (userNameInputElm) {
+  const userNameInputElm = document.getElementById("name");
+  if (userNameInputElm) {
     // pre/for 82GoogleAccessBetterAddArt.html
     if (sgnd) {
       userNameInputElm.value = auth2.currentUser
@@ -95,6 +73,13 @@ function updateSignIn() {
         .getName();
     } else {
       userNameInputElm.value = "";
+    }
+  } else if (userInfoElm) {
+    // pre/for 82GoogleAccessBetter.html
+    if (sgnd) {
+      renderUserInfo(auth2.currentUser.get(), "userStatus");
+    } else {
+      renderLogOutInfo("userStatus");
     }
   }
 }

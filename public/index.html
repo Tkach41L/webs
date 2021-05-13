@@ -16,6 +16,13 @@
     <script src="https://apis.google.com/js/platform.js" async defer></script>
   </head>
   <body>
+    <aside id="googleFloat">
+      <div id="SignInButton"></div>
+      <div id="SignedIn">
+          Ste prihlásený ako <span id="userName"></span><br/> <button onclick="signOut()">Odhlásiť sa</button>
+      </div>
+    </aside>
+
     <h1 class="mid">Youtube Trending</h1>
     <div class="menu">
       <nav class="menuIts" class="menu mnHide">
@@ -367,7 +374,7 @@
       </script>
     </div>
   
-    <script>
+    <!-- <script>
       function onSignIn(googleUser) {
         // Useful data for your client-side scripts:
         var profile = googleUser.getBasicProfile();
@@ -382,14 +389,9 @@
         var id_token = googleUser.getAuthResponse().id_token;
         console.log("ID Token: " + id_token);
       }
-    </script>
+    </script> -->
 
-<aside id="googleSignIn">
-  <div id="SignInButton"></div>
-  <div id="SignedIn">
-      Ste prihlásený ako <span id="userName"></span> <button onclick="signOut()">Odhlásiť sa</button>
-  </div>
-</aside>
+
 
     <script src="js/addOpinion.js"></script>
     <script src="js/addArticle.js"></script>

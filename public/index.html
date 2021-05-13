@@ -1,62 +1,131 @@
 <!DOCTYPE html>
 <html lang="sk">
   <head>
-    <base href="/assignments-2021/streda-9_10/wt1-4925/" />
+    <!-- <base href="/assignments-2021/streda-9_10/wt1-4925/" /> -->
+    <meta name="google-signin-scope" content="zheka.tk31@gmail.com" />
+    <meta
+      name="google-signin-client_id"
+      content="762667731556-2tc3epqeuse2op0vd4j823lfhgepcb9t.apps.googleusercontent.com"
+    />
     <meta charset="UTF-8" />
     <title>YouTube Trending</title>
     <link rel="shortcut icon" type="image/png" href="fig/logo.jpg" />
     <link rel="stylesheet" href="css/screenStyle.css" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link href="./css/printStyle.css" rel="stylesheet" media="print" />
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
   </head>
   <body>
     <h1 class="mid">Youtube Trending</h1>
     <div class="menu">
-      <button id="menuTitle">Menu</button>
-
-      <nav id="menuIts" class="menu mnHide">
+      <nav class="menuIts" class="menu mnHide">
         <a href="#welcome">Welcome!</a>
         <a href="#articles">Articles</a>
         <a href="#opinions">Visitor opinions</a>
         <a href="#addOpinion">Add your opinion</a>
       </nav>
     </div>
+
+    <div class="main" id="router-view"></div>
+
     <script id="template-welcome" type="text/template">
+          <article class = "template-welcome">
+        <p class="forFirstArt" id="dek2">
+          When it comes to online video sharing, YouTube is, without a doubt, the
+          ultimate destination. The platform has established itself as a peerless
+          social media website where modern video culture unfolds daily. Because of
+          this, marketers have turned to YouTube to build brand relevancy and spur
+          their video marketing strategies. However, positive results have been hard
+          to come by, especially for marketers who are not abreast of key YouTube
+          trends.
+        </p>
+        <p id="dek1" class="bottom">
+          The site is filled with interesting content, starting with what YouTube
+          trends are and ending with what will be in trends for the coming year.
+        </p>
+      </article>
+    </script>
+
+    <script id="template-articles" type="text/template">
+      {{#articles}}
+      <article id="art">
+          <h3><a href="{{detailLink}}">{{title}}</a></h3>
+          <p> {{author}} </p>
+      </article>
+      {{/articles}}
+      <nav class="menuIts">
+      <a href="#artInsert" class="artMid">Create new!</a>
+      </nav>
+    </script>
+
+    <script id="template-insertArticle" type="text/template">
       <article>
-    <p class="forFirstArt" id="dek2">
-      When it comes to online video sharing, YouTube is, without a doubt, the
-      ultimate destination. The platform has established itself as a peerless
-      social media website where modern video culture unfolds daily. Because of
-      this, marketers have turned to YouTube to build brand relevancy and spur
-      their video marketing strategies. However, positive results have been hard
-      to come by, especially for marketers who are not abreast of key YouTube
-      trends.
-    </p>
-    <p id="dek1" class="bottom">
-      The site is filled with interesting content, starting with what YouTube
-      trends are and ending with what will be in trends for the coming year.
-    </p>
-  </article>
-</script>
-<script id="template-articles" type="text/template">
-  <article  id="artPine">
-    <div class="backgroundsArticles">
-      <h3>
-        <a href="article1.html" class="not-active"
-          >How to get into YouTube trends?</a
-        >
-      </h3>
-      <h3>
-        <a href="article2.html" class="not-active">Who is trending now?</a>
-      </h3>
-      <h3>
-        <a href="article3.html" class="not-active"
-          >YouTube Trends for 2021/2022?</a
-        >
-      </h3>
-    </div>
-  </article>
-</script>
+          <h2>New article</h2>
+          <p>
+              Please, use the form below to create your article.
+          </p>
+          <form id="articleForm" onsubmit="return createAndProcessArticle(event)">
+            <div class="artMid">
+              <label for="author">Autor / Author:</label>
+              <input type="text" name="author" id="author" size="50" title="Autor článku, maximálna dĺžka: 100 znakov (article author, max. length 100 characters)." maxlength="100" placeholder="napr. Ján Trieska" />
+              <br>
+              <label for="title">Názov / Title:</label>
+              <input type="text" name="title" id="title" size="50"  maxlength="100" pattern="\S[\S\s]*" required title="Názov článku, povinná položka, maximálna dĺžka: 100 znakov, prvý znak nesmie byť medzera (Article title, mandatory item, max. length: 100 characters, the first character must not be a space)." placeholder="napr. Môj prvý príbeh / e.g. My story." />
+              <!--
+              \s =  match any white space character
+              \S =  match any non-white space character
+              -->
+              <br>
+              <label for="imageLink">Obrázok / Image (url):</label>
+              <input type="url" name="imageLink" id="imageLink" size="50" title="URL obrázka. Maximálna dĺžka: 100 znakov (image URL, max. length 100 characters)." maxlength="100"/>
+              <br>
+              <label></label><button type="button" id="btShowFileUpload">Nahraj obrázok / Upload image</button>
+
+                  <fieldset class="added hiddenElm" id="fsetFileUpload">
+                      <legend>Nahranie obrázka / Image Upload</legend>
+                      <input type="file" id="flElm" name="file" accept="image/jpeg, image/png"/>
+                      <br />
+                      <button type="button" id="btFileUpload">Odošli obrázok na server / Send image to server</button>
+                      <button type="button" id="btCancelFileUpload">Zruš nahrávanie / Cancel uploading</button>
+                  </fieldset>
+
+
+              <br>
+              <label for="content">Text článku / Article content:</label>
+              <textarea name="content" id="content" spellcheck="true" lang="sk" cols="50" rows="20" required title="Obsah článku, povinná položka,  môže byť obyčajný text alebo html (Article content, mandatory item, can be plain text or in HTML)."></textarea>
+              <br>
+              <label for="tags">Kľúčové slová / Keywords:</label>
+              <input type="text" name="tags" id="tags" size="50" title="Zoznam kľúčových slov oddelených čiarkou (Keyword list, comma separated)." placeholder="napr. dedina, dráma / e.g. village, drama" />
+
+              <br>
+              <br>
+              <button type="reset">
+                  Reset
+              </button>
+              <button type="submit">
+                  Pridaj článok / Add article
+              </button>
+
+          </form>
+          <footer  class="menuLink"><a href="#welcome">Back to the menu</a></footer>
+        </div>
+      </article>
+    </script>
+
+    
+      <!--<footer  class="menuLink"><a href="#welcome">Back to the menu</a></footer>
+      -->
+    </script>
+    <script id="template-articles-error" type="text/template">
+
+      <article class="artMid">
+          <h2>Articles acquisition failed</h2>
+          <p>
+              {{errMessage}}
+          </p>
+      </article>
+      <footer  class="menuLink"><a href="#welcome">Back to the menu</a></footer>
+    </script>
 
     <script id="template-addOpinion" type="text/template">
         <article  id="artOpnFrm">
@@ -148,31 +217,117 @@
       </article>
     </script>
 
-   
+    <script id="template-article" type="text/template">
+      <article class="artMid">
+          <h3>{{title}}</h3>
+          <p>
+              by {{author}}
+          </p>
+          {{#imageLink}}
+          <figure>
+              <img src="{{imageLink}}" alt="article figure" />
+          </figure>
+          {{/imageLink}}
+          <div>{{{content}}}</div>
+          <p>
+              Keywords:
+              {{tags}}
+          </p>
+      </article>
+
+      <footer class="artMid">
+          <a href="{{backLink}}" class="linkAsButton"><< Back</a>
+          <a href="{{editLink}}" class="linkAsButton">Edit</a>
+          <a href="{{deleteLink}}" class="linkAsButton">Delete</a>
+          <a href="#menuTitle" class="linkAsButton">Up to the menu</a>
+      </footer>
+    </script>
+
+    <script id="template-article-form" type="text/template">
+      <article class="artMid">
+          <h2>{{formTitle}}</h2> <br><br>
+
+          <!--<form id="articleForm" onsubmit="return {{formSubmitCall}}">-->
+          <form id="articleForm">
+              <label for="author">Author:</label>
+              <input type="text" name="author" id="author" value="{{author}}" size="50"
+                     title="Article author, max. length 100 characters."
+                     maxlength="100" placeholder="e.g. Ján Trieska" />
+              <br>
+              <label for="title">Title:</label>
+              <input type="text" name="title" id="title" value="{{title}}" size="50" required
+                     maxlength="100" pattern="\S[\S\s]*" placeholder="e.g. My story."
+                     title="Article title, mandatory item, max. length: 100 characters, the first character must not be a space."  />
+              <br>
+              <label for="imageLink">Image (url):</label>
+              <input type="url" name="imageLink" id="imageLink" value="{{imageLink}}" size="50"
+                     title="Image URL, max. length 100 characters." maxlength="100"/>
+              <br>
+              <label></label>
+              <button type="button" id="btShowFileUpload" onclick="showFileUpload()">Upload image</button>
+
+              <fieldset class="added hiddenElm" id="fsetFileUpload">
+                  <legend>Image Upload</legend>
+                  <input type="file" id="flElm" name="file" accept="image/jpeg, image/png"/>
+                  <br />
+                  <button type="button" id="btFileUpload" onclick="uploadImg('{{urlBase}}')">
+                      Send image to server </button>
+                  <button type="button" id="btCancelFileUpload" onclick="cancelFileUpload()">
+                      Cancel uploading </button>
+              </fieldset>
+
+
+              <br>
+              <label for="content">Article content:</label>
+              <textarea
+                      name="content" id="content" spellcheck="true" lang="sk"
+                      cols="50" rows="20" required
+                      title="Article content, mandatory item, can be plain text or in HTML.">
+                {{content}}
+              </textarea>
+              <br>
+              <label for="tags">Keywords:</label>
+              <input  type="text" name="tags" id="tags" value="{{tags}}" size="50"
+                      title="Keyword list, comma separated." placeholder="e.g. village, drama" />
+              <br> <br>
+              <button type="reset"> Reset Form </button>
+              <button type="submit"> {{submitBtTitle}} </button>
+
+          </form>
+      </article>
+
+      <footer class="artMid">
+          <a href="{{backLink}}" class="linkAsButton"><< Back</a>
+          <a href="#menuTitle" class="linkAsButton">Up to the menu</a>
+      </footer>
+    </script>
 
     <div class="opnClass"></div>
     <div id="opContainer"></div>
     <div id="target"></div>
 
     <script id="template-opinions" type="text/template">
-    <article  id="artOpinions">
-      <h1 class="top">Visitors</h1>
-    <script id="template" type="text/template">
-      {{#data}}
-      <section id="visitors">
-          <h3>{{name}} <i>{{created}}</i></h3>
-          <img id="imag" src="{{url}}" alt="url">
-          <p>{{message}}</p>
-          <p>{{gender}}</p>
-          <p>{{email}}</p>
-          <p>{{occupationСhoice}}</p>
-          <p>{{markSite}}</p>
-          <p>{{cell}}</p>
-      </section>
-      {{/data}}
+        <article  id="artOpinions">
+          <h1 class="top">Visitors</h1>
+          {{#.}}
+          <section id="visitors">
+              <h3>{{name}} <i>{{created}}</i></h3>
+              <img id="imag" src="{{url}}" alt="url">
+              <p>{{message}}</p>
+              <p>{{male}}</p>
+              <p>{{email}}</p>
+              <p>{{occupationСhoice}}</p>
+              <p>{{markSite}}</p>
+              <p>{{cell}}</p>
+          </section>
+          {{/.}}
+          {{^.}}
+          <section>
+              Sorry, no opinions found.
+          </section>
+          {{/.}}
+      </article>
     </script>
-  </article>
-</script>
 
     <script type="module" src="./js/indexFormStorageMustache.js"></script>
 
@@ -211,5 +366,35 @@
         ctx.fill();
       </script>
     </div>
+  
+    <script>
+      function onSignIn(googleUser) {
+        // Useful data for your client-side scripts:
+        var profile = googleUser.getBasicProfile();
+        console.log("ID: " + profile.getId()); // Don't send this directly to your server!
+        console.log("Full Name: " + profile.getName());
+        console.log("Given Name: " + profile.getGivenName());
+        console.log("Family Name: " + profile.getFamilyName());
+        console.log("Image URL: " + profile.getImageUrl());
+        console.log("Email: " + profile.getEmail());
+
+        // The ID token you need to pass to your backend:
+        var id_token = googleUser.getAuthResponse().id_token;
+        console.log("ID Token: " + id_token);
+      }
+    </script>
+
+<aside id="googleSignIn">
+  <div id="SignInButton"></div>
+  <div id="SignedIn">
+      Ste prihlásený ako <span id="userName"></span> <button onclick="signOut()">Odhlásiť sa</button>
+  </div>
+</aside>
+
+    <script src="js/addOpinion.js"></script>
+    <script src="js/addArticle.js"></script>
+    <script src="js/handleArticleForms.js"></script>
+    <script src="js/Google.js"></script>
+    <script src="https://apis.google.com/js/platform.js?onload=startGSingIn" async defer></script>
   </body>
 </html>

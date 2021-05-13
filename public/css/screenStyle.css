@@ -458,6 +458,21 @@ div {
   display: block;
 }
 
+.menuIts {
+  text-align: center;
+  padding: 1%;
+  background-color: rgba(0, 238, 255, 0.137);
+}
+
+#art {
+  font-size: 100%;
+}
+
+.artMid {
+  margin: 0 auto;
+  text-align: center;
+}
+
 @media (max-width: 800px) {
   body {
     font-size: 100%;

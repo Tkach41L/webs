@@ -54,6 +54,13 @@ export default [
         "template-insertArticle"
       ).innerHTML),
   },
+  {
+    hash: "google",
+    target: "router-view",
+    getTemplate: (targetElm) =>
+      (document.getElementById(targetElm).innerHTML =
+        document.getElementById("template-google").innerHTML),
+  },
 ];
 
 function createHtml4opinions(targetElm) {

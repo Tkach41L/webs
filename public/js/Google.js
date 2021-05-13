@@ -4,13 +4,15 @@ function renderUserInfo(googleUser, htmlElmId) {
   const profile = googleUser.getBasicProfile();
 
   const htmlStringEn = `
-            <p>User logged in.</p>
-            <ul>
-                <li> ID: ${profile.getId()}
-                <li>  Full name: ${profile.getName()}
-                <li>  Image URL: ${profile.getImageUrl()}
-                <li>  Email: ${profile.getEmail()}
-            </ul>
+  <p>User logged in.</p>
+  <ul>
+      <li> ID: ${profile.getId()}
+      <li>  Full name: ${profile.getName()}
+      <li>  Given name: ${profile.getGivenName()}
+      <li>  Family name: ${profile.getFamilyName()}
+      <li>  Image URL: ${profile.getImageUrl()}
+      <li>  Email: ${profile.getEmail()}
+  </ul>
         `;
   document.getElementById(htmlElmId).innerHTML = htmlStringEn;
 }

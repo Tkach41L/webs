@@ -367,7 +367,7 @@
       </script>
     </div>
   
-    <!-- <script>
+    <script>
       function onSignIn(googleUser) {
         // Useful data for your client-side scripts:
         var profile = googleUser.getBasicProfile();
@@ -382,7 +382,7 @@
         var id_token = googleUser.getAuthResponse().id_token;
         console.log("ID Token: " + id_token);
       }
-    </script> -->
+    </script>
 
 <aside id="googleSignIn">
   <div id="SignInButton"></div>
@@ -394,6 +394,7 @@
     <script src="js/addOpinion.js"></script>
     <script src="js/addArticle.js"></script>
     <script src="js/handleArticleForms.js"></script>
+    <div id="userStatus"></div>
     <script src="js/Google.js"></script>
     <script src="https://apis.google.com/js/platform.js?onload=startGSingIn" async defer></script>
   </body>

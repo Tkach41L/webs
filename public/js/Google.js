@@ -5,7 +5,6 @@ function renderUserInfo(googleUser, htmlElmId) {
 
   const htmlStringEn = `
             <p>User logged in.</p>
-            <p>User logged in.</p>
             <ul>
                 <li> ID: ${profile.getId()}
                 <li>  Full name: ${profile.getName()}

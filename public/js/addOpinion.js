@@ -1,4 +1,4 @@
-function processOpnFrmData(event) {
+export default function processOpnFrmData(event) {
   //1.prevent normal event (form sending) processing
   event.preventDefault();
 
@@ -41,15 +41,22 @@ function processOpnFrmData(event) {
 
   console.log("New opinion:\n " + JSON.stringify(newOpinion));
 
-  let opinions = [];
+  const request = {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "X-Parse-Application-Id": "VFdVT83jOBJj17B4r1TrpaiUllgCYXkBh4XQEOiO",
+      "X-Parse-REST-API-Key": "kGvUqi793R22kDWJMhFyfk6SMPrmeuVBQggN4G05",
+    },
+    body: JSON.stringify(newOpinion),
+  };
 
-  if (localStorage.commentsStorage) {
-    opinions = JSON.parse(localStorage.commentsStorage); //peredau dannie
-  }
+  const url = "https://parseapi.back4app.com/classes/App";
 
-  opinions.push(newOpinion); //peredau v newopinion
-  localStorage.commentsStorage = JSON.stringify(opinions); //dannie json v string
+  fetch(url, request).then((response) => {
+    console.log(response);
+  });
 
-  //5. Reset the form
+  //5. Go to the opinions
   window.location.hash = "#opinions";
 }

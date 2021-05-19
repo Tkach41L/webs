@@ -195,59 +195,59 @@
     </script>
 
     <script id="template-article" type="text/template">
-                        <article class="artid">
-                            <h3>{{title}}</h3>
-                            <p>
-                                by {{author}}
-                            </p>
-                            {{#imageLink}}
-                            <figure>
-                                <img src="{{imageLink}}" alt="article figure" />
-                            </figure>
-                            {{/imageLink}}
-                            <div>{{{content}}}</div>
-                            <p>
-                                Keywords:
-                                {{tags}}
-                            </p>
+                           <article class="artid">
+                               <h3>{{title}}</h3>
+                               <p>
+                                   by {{author}}
+                               </p>
+                               {{#imageLink}}
+                               <figure>
+                                   <img src="{{imageLink}}" alt="article figure" />
+                               </figure>
+                               {{/imageLink}}
+                               <div>{{{content}}}</div>
+                               <p>
+                                   Keywords:
+                                   {{tags}}
+                               </p>
 
+      				<h5> Comments </h5>
+                            <ul id="comment-section">
 
-                         <ul id="comment-section">
-                  <h5> Comments </h5>
-                             {{#comments}}
-                                		<p>
-                      			        by {{author}}
-                      			    </p>
+                                {{#comments}}
+                                   		<p>
+                         			        by {{author}}
+                         			    </p>
 
-                             <li>{{{text}}}</li>
-                             {{/comments}}
+                                <li>{{{text}}}</li>
+                                {{/comments}}
 
-                     	</ul>
-                     	<br>
-            <!-- ---------------------- -->
-            <div>
-            	<input id='btn' type=checkbox>
-            	<label for='btn'>Add comment</label>
-            	<div class='comm'>
-        <form>
-            	  <input type="text" id="comment_author" required/>
-                     	<br>
-                     	<input type="text" id="comment_text" required/>
-                     	<br>
-                     	<button type="button" id="add_comment">
-                     		Add comment
-                     	</button>
-      </form>
-            	</div>
-       </div>
-            <!-- ---------------------- -->
-                     </article>
+                        	</ul>
+                        	<br>
+               <!-- ---------------------- -->
+               <div>
+               	<input id='btn' type=checkbox>
+               	<label for='btn' class="btnn">Add comment</label>
+               	<div class='comm'>
 
-                        <footer class="artMid">
-                            <a href="{{backLink}}" class="linkAsButton"><< Back</a>
-                            <a href="{{editLink}}" class="linkAsButton">Edit</a>
-                            <a href="{{deleteLink}}" class="linkAsButton">Delete</a>
-                        </footer>
+      <h5> New Comment </h5>
+               	  <input type="text" id="comment_author" required/>
+                        	<br>
+                        	<input type="text" id="comment_text" required/>
+                        	<br>
+                        	<button type="button" id="add_comment">
+                        		Add comment
+                        	</button>
+               	</div>
+          </div>
+               <!-- ---------------------- -->
+                        </article>
+
+                           <footer class="artMid">
+                               <a href="{{backLink}}" class="linkAsButton"><< Back</a>
+                               <a href="{{editLink}}" class="linkAsButton">Edit</a>
+                               <a href="{{deleteLink}}" class="linkAsButton">Delete</a>
+                           </footer>
     </script>
 
     <script id="template-article-form" type="text/template">

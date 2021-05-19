@@ -503,6 +503,26 @@ input[type="checkbox"]:checked ~ label {
   display: none;
 }
 
+.btnn {
+  /* по-умолчанию для <button>, но пригодится для <a> */
+  display: inline-block;
+  text-align: center;
+  text-decoration: none;
+
+  /* создаём маленькие отступы, если кнопки перенесутся на две строки */
+  margin: 2px 0;
+
+  /* невидимая граница (понадобится для цвета при наведении/фокусе) */
+  border: solid 1px transparent;
+  border-radius: 4px;
+
+  /* размер строится из текста и отступов (без width/height) */
+  padding: 0.5em 1em;
+
+  /* убедитесь, что достаточно контраста! */
+  color: #ffffff;
+  background-color: #9555af;
+}
 @media (max-width: 800px) {
   body {
     font-size: 100%;

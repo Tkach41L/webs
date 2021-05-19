@@ -489,6 +489,20 @@ div {
   display: block;
 }
 
+.comm {
+  display: none;
+}
+
+input[type="checkbox"] {
+  display: none;
+}
+input[type="checkbox"]:checked ~ .text {
+  display: block !important;
+}
+input[type="checkbox"]:checked ~ label {
+  display: none;
+}
+
 @media (max-width: 800px) {
   body {
     font-size: 100%;

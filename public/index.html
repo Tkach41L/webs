@@ -102,7 +102,6 @@
              {{/.}}
          <footer  class="menuLink"><a href="#menuTitle">Back to the menu</a></footer>
       </article>
-      <footer><a href="#menuTitle" class="linkAsButton">Up to the menu</a></footer>
     </script>
 
     <script id="template-addOpinion" type="text/template">
@@ -196,51 +195,51 @@
     </script>
 
     <script id="template-article" type="text/template">
-         <article class="artid">
-             <h3>{{title}}</h3>
-             <p>
-                 by {{author}}
-             </p>
-             {{#imageLink}}
-             <figure>
-                 <img src="{{imageLink}}" alt="article figure" />
-             </figure>
-             {{/imageLink}}
-             <div>{{{content}}}</div>
-             <p>
-                 Keywords:
-                 {{tags}}
-             </p>
+            <article class="artid">
+                <h3>{{title}}</h3>
+                <p>
+                    by {{author}}
+                </p>
+                {{#imageLink}}
+                <figure>
+                    <img src="{{imageLink}}" alt="article figure" />
+                </figure>
+                {{/imageLink}}
+                <div>{{{content}}}</div>
+                <p>
+                    Keywords:
+                    {{tags}}
+                </p>
 
-             <h5> Comments </h5>
-          <ul id="comment-section">
-              {{#comments}}
-                 		<p>
-       			        by {{author}}
-       			    </p>
 
-              <li>{{{text}}}</li>
-              {{/comments}}
+             <ul id="comment-section">
+      <h5> Comments </h5>
+                 {{#comments}}
+                    		<p>
+          			        by {{author}}
+          			    </p>
 
-      	</ul>
-      	<br>
+                 <li>{{{text}}}</li>
+                 {{/comments}}
 
-      	<input type="text" id="comment_author"/>
-      	<br>
-      	<input type="text" id="comment_text"/>
-      	<br>
-      	<button type="button" id="add_comment">
-      		Add comment
-      	</button>
+         	</ul>
+         	<br>
 
-      </article>
+         	<input type="text" id="comment_author"/>
+         	<br>
+         	<input type="text" id="comment_text"/>
+         	<br>
+         	<button type="button" id="add_comment">
+         		Add comment
+         	</button>
 
-         <footer class="artMid">
-             <a href="{{backLink}}" class="linkAsButton"><< Back</a>
-             <a href="{{editLink}}" class="linkAsButton">Edit</a>
-             <a href="{{deleteLink}}" class="linkAsButton">Delete</a>
-             <!-- <a href="#top" class="linkAsButton">Up to the menu</a> -->
-         </footer>
+         </article>
+
+            <footer class="artMid">
+                <a href="{{backLink}}" class="linkAsButton"><< Back</a>
+                <a href="{{editLink}}" class="linkAsButton">Edit</a>
+                <a href="{{deleteLink}}" class="linkAsButton">Delete</a>
+            </footer>
     </script>
 
     <script id="template-article-form" type="text/template">

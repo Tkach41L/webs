@@ -521,8 +521,14 @@ input[type="checkbox"]:checked ~ label {
 
   /* убедитесь, что достаточно контраста! */
   color: #ffffff;
-  background-color: #9555af;
+  background-color: #9eb4ff;
 }
+
+.border-bottom-input {
+  border: 0;
+  border-bottom: 1px solid #eee;
+}
+
 @media (max-width: 800px) {
   body {
     font-size: 100%;

@@ -16,29 +16,29 @@ export default function createAndProcessArticle() {
 
 	//Pridanie funkcionality pre kliknutie na tlacidlo "Odošli obrázok na server / Send image to server"
 	//Adding functionality for the button "Odošli obrázok na server / Send image to server"
-	document.getElementById('btFileUpload').addEventListener('click', () => {
-		uploadImg(
-			'imageLink',
-			'fsetFileUpload',
-			'btShowFileUpload',
-			document.getElementById('flElm').files,
-			serverUrlBase
-		);
-	});
+	// document.getElementById('btFileUpload').addEventListener('click', () => {
+	// 	uploadImg(
+	// 		'imageLink',
+	// 		'fsetFileUpload',
+	// 		'btShowFileUpload',
+	// 		document.getElementById('flElm').files,
+	// 		serverUrlBase
+	// 	);
+	// });
 
 	//Pridanie funkcionality pre kliknutie na tlacidlo "Nahraj obrázok / Upload image"
 	//Adding functionality for the button "Nahraj obrázok / Upload image"
-	document.getElementById('btShowFileUpload').addEventListener('click', () => {
-		document.getElementById('fsetFileUpload').classList.remove('hiddenElm');
-		document.getElementById('btShowFileUpload').classList.add('hiddenElm');
-	});
+	// document.getElementById('btShowFileUpload').addEventListener('click', () => {
+	// 	document.getElementById('fsetFileUpload').classList.remove('hiddenElm');
+	// 	document.getElementById('btShowFileUpload').classList.add('hiddenElm');
+	// });
 
 	//Pridanie funkcionality pre kliknutie na tlacidlo "Zruš nahrávanie / Cancel uploading"
 	//Adding functionality for the button "Zruš nahrávanie / Cancel uploading"
-	document.getElementById('btCancelFileUpload').addEventListener('click', () => {
-		document.getElementById('fsetFileUpload').classList.add('hiddenElm');
-		document.getElementById('btShowFileUpload').classList.remove('hiddenElm');
-	});
+	// document.getElementById('btCancelFileUpload').addEventListener('click', () => {
+	// 	document.getElementById('fsetFileUpload').classList.add('hiddenElm');
+	// 	document.getElementById('btShowFileUpload').classList.remove('hiddenElm');
+	// });
 
 	//----------------------------------------------------------------------------------------------------------------
 	//requests implemented using Fetch API

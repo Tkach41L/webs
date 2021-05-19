@@ -1,409 +1,407 @@
 <!DOCTYPE html>
 <html lang="sk">
-  <head>
-    <!-- <base href="/assignments-2021/streda-9_10/wt1-4925/" /> -->
-    <meta name="Author" content="Yevhenii" />
-    <meta
-      name="google-signin-client_id"
-      content="615334397579-0egslvba3brsp8vrqmp2p9s560cjh2ff.apps.googleusercontent.com"
-    />
-    <meta charset="UTF-8" />
-    <title>YouTube Trending</title>
-    <link rel="shortcut icon" type="image/png" href="fig/logo.jpg" />
-    <link rel="stylesheet" href="css/screenStyle.css" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="./css/printStyle.css" rel="stylesheet" media="print" />
-  </head>
-  <body>
-    <aside id="googleFloat">
-      <div id="SignInButton"></div>
-      <div id="SignedIn">
-        Ste prihlásený ako <span id="userName"></span><br />
-        <button onclick="signOut()">Odhlásiť sa</button>
-      </div>
-    </aside>
+	<head>
+		<!-- <base href="/assignments-2021/streda-9_10/wt1-4925/" /> -->
+		<meta name="Author" content="Yevhenii" />
+		<meta
+			name="google-signin-client_id"
+			content="615334397579-0egslvba3brsp8vrqmp2p9s560cjh2ff.apps.googleusercontent.com"
+		/>
+		<meta charset="UTF-8" />
+		<title>YouTube Trending</title>
+		<link rel="shortcut icon" type="image/png" href="fig/logo.jpg" />
+		<link rel="stylesheet" href="css/screenStyle.css" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link href="./css/printStyle.css" rel="stylesheet" media="print" />
+	</head>
+	<body>
+		<aside id="googleFloat">
+			<div id="SignInButton"></div>
+			<div id="SignedIn">
+				Ste prihlásený ako <span id="userName"></span><br />
+				<button onclick="signOut()">Odhlásiť sa</button>
+			</div>
+		</aside>
 
-    <h1 class="mid">Youtube Trending</h1>
-    <div class="menu">
-      <nav class="menuIts" class="menu mnHide">
-        <a href="#welcome">Welcome!</a>
-        <a href="#articles">Articles</a>
-        <a href="#opinions">Visitor opinions</a>
-        <a href="#addOpinion">Add your opinion</a>
-        <a href="#google">Google Info</a>
-      </nav>
-    </div>
+		<h1 class="mid">Youtube Trending</h1>
+		<div class="menu">
+			<nav class="menuIts" class="menu mnHide">
+				<a href="#welcome">Welcome!</a>
+				<a href="#articles">Articles</a>
+				<a href="#opinions">Visitor opinions</a>
+				<a href="#addOpinion">Add your opinion</a>
+				<a href="#google">Google Info</a>
+			</nav>
+		</div>
 
-    <div class="main" id="router-view"></div>
+		<div class="main" id="router-view"></div>
 
-    <script id="template-welcome" type="text/template">
-          <article class = "template-welcome">
-        <p class="forFirstArt" id="dek2">
-          When it comes to online video sharing, YouTube is, without a doubt, the
-          ultimate destination. The platform has established itself as a peerless
-          social media website where modern video culture unfolds daily. Because of
-          this, marketers have turned to YouTube to build brand relevancy and spur
-          their video marketing strategies. However, positive results have been hard
-          to come by, especially for marketers who are not abreast of key YouTube
-          trends.
-        </p>
-        <p id="dek1" class="bottom">
-          The site is filled with interesting content, starting with what YouTube
-          trends are and ending with what will be in trends for the coming year.
-        </p>
-      </article>
-    </script>
+		<script id="template-welcome" type="text/template">
+			    <article class = "template-welcome">
+			  <p class="forFirstArt" id="dek2">
+			    When it comes to online video sharing, YouTube is, without a doubt, the
+			    ultimate destination. The platform has established itself as a peerless
+			    social media website where modern video culture unfolds daily. Because of
+			    this, marketers have turned to YouTube to build brand relevancy and spur
+			    their video marketing strategies. However, positive results have been hard
+			    to come by, especially for marketers who are not abreast of key YouTube
+			    trends.
+			  </p>
+			  <p id="dek1" class="bottom">
+			    The site is filled with interesting content, starting with what YouTube
+			    trends are and ending with what will be in trends for the coming year.
+			  </p>
+			</article>
+		</script>
 
-    <script id="template-articles" type="text/template">
-      {{#articles}}
-      <article>
-          <h2><a href="{{detailLink}}">{{title}}</a></h2>
-          <p>
-              by {{author}}
-          </p>
-      </article>
-      {{/articles}}
+		<script id="template-articles" type="text/template">
+			{{#articles}}
+			<article>
+			    <h2><a href="{{detailLink}}">{{title}}</a></h2>
+			    <p>
+			        by {{author}}
+			    </p>
+			</article>
+			{{/articles}}
 
-         <nav class="menuIts">
-         <a href="#artInsert" class="artMid">Create new!</a>
-         </nav>
-    </script>
+			   <nav class="menuIts">
+			   <a href="#artInsert" class="artMid">Create new!</a>
+			   </nav>
+		</script>
 
-    <script id="template-articles-error" type="text/template">
+		<script id="template-articles-error" type="text/template">
 
-      <article>
-          <h2>Articles acquisition failed</h2>
-          <p>
-              {{errMessage}}
-          </p>
-      </article>
-      <footer  class="menuLink"><a href="#welcome">Back to the menu</a></footer>
-    </script>
+			<article>
+			    <h2>Articles acquisition failed</h2>
+			    <p>
+			        {{errMessage}}
+			    </p>
+			</article>
+			<footer  class="menuLink"><a href="#welcome">Back to the menu</a></footer>
+		</script>
 
-    <script id="template-opinions" type="text/template">
-           <article  id="artOpinions">
-             <h1 class="top">Visitors</h1>
-             {{#.}}
-             <section id="visitors">
-                 <h3>{{name}} <i>{{created}}</i></h3>
-                 <img id="imag" src="{{url}}" alt="url">
-                 <p>{{message}}</p>
-                 <p>{{male}}</p>
-                 <p>{{email}}</p>
-                 <p>{{occupationСhoice}}</p>
-                 <p>{{markSite}}</p>
-                 <p>{{cell}}</p>
-             </section>
-             {{/.}}
-             {{^.}}
-             <section>
-                 Sorry, no opinions found.
-             </section>
-             {{/.}}
-         <footer  class="menuLink"><a href="#menuTitle">Back to the menu</a></footer>
-      </article>
-      <footer><a href="#menuTitle" class="linkAsButton">Up to the menu</a></footer>
-    </script>
+		<script id="template-opinions" type="text/template">
+			     <article  id="artOpinions">
+			       <h1 class="top">Visitors</h1>
+			       {{#.}}
+			       <section id="visitors">
+			           <h3>{{name}} <i>{{created}}</i></h3>
+			           <img id="imag" src="{{url}}" alt="url">
+			           <p>{{message}}</p>
+			           <p>{{male}}</p>
+			           <p>{{email}}</p>
+			           <p>{{occupationСhoice}}</p>
+			           <p>{{markSite}}</p>
+			           <p>{{cell}}</p>
+			       </section>
+			       {{/.}}
+			       {{^.}}
+			       <section>
+			           Sorry, no opinions found.
+			       </section>
+			       {{/.}}
+			   <footer  class="menuLink"><a href="#menuTitle">Back to the menu</a></footer>
+			</article>
+			<footer><a href="#menuTitle" class="linkAsButton">Up to the menu</a></footer>
+		</script>
 
-    <script id="template-addOpinion" type="text/template">
-        <article  id="artOpnFrm">
-        <section class="container">
-          <form id="form4Index">
-            <p>Your gender:</p>
-            <div class="lol">
-              <input type="radio" id="male" name="gender" value="male" />
-              <label for="gender">Male</label>
-              <input type="radio" id="female" name="gender" value="female" />
-              <label for="gender">Female</label>
-            </div>
-            <ul class="flex-outer">
-              <li>
-                <label for="name">Name</label>
-                <input
-                  type="text"
-                  id="name"
-                  placeholder="Enter your name here"
-                  required
-                />
-              </li>
-              <li>
-                <label for="email">Email</label>
-                <input
-                  type="email"
-                  id="email"
-                  placeholder="Enter your email here"
-                  required
-                />
-              </li>
-              <li>
-                <label for="url">Url</label>
-                <input
-                  type="url"
-                  id="url"
-                  placeholder="https://example.com"
-                  size="30"
-                />
-              </li>
-              <li>
-                <label for="message">Message</label>
-                <textarea
-                  rows="6"
-                  id="message"
-                  placeholder="Enter your message here"
-                  required
-                ></textarea>
-              </li>
-              <label for="occupationСhoice">Your occupation</label>
-              <input
-                list="occupationFlavors"
-                id="occupationСhoice"
-                name="occupationСhoice"
-              />
+		<script id="template-addOpinion" type="text/template">
+			  <article  id="artOpnFrm">
+			  <section class="container">
+			    <form id="form4Index">
+			      <p>Your gender:</p>
+			      <div class="lol">
+			        <input type="radio" id="male" name="gender" value="male" />
+			        <label for="gender">Male</label>
+			        <input type="radio" id="female" name="gender" value="female" />
+			        <label for="gender">Female</label>
+			      </div>
+			      <ul class="flex-outer">
+			        <li>
+			          <label for="name">Name</label>
+			          <input
+			            type="text"
+			            id="name"
+			            placeholder="Enter your name here"
+			            required
+			          />
+			        </li>
+			        <li>
+			          <label for="email">Email</label>
+			          <input
+			            type="email"
+			            id="email"
+			            placeholder="Enter your email here"
+			            required
+			          />
+			        </li>
+			        <li>
+			          <label for="url">Url</label>
+			          <input
+			            type="url"
+			            id="url"
+			            placeholder="https://example.com"
+			            size="30"
+			          />
+			        </li>
+			        <li>
+			          <label for="message">Message</label>
+			          <textarea
+			            rows="6"
+			            id="message"
+			            placeholder="Enter your message here"
+			            required
+			          ></textarea>
+			        </li>
+			        <label for="occupationСhoice">Your occupation</label>
+			        <input
+			          list="occupationFlavors"
+			          id="occupationСhoice"
+			          name="occupationСhoice"
+			        />
 
-              <datalist id="occupationFlavors">
-                <option value="Kid"></option>
-                <option value="Student"></option>
-                <option value="Employee"></option>
-                <option value="Retiree"></option>
-              </datalist>
+			        <datalist id="occupationFlavors">
+			          <option value="Kid"></option>
+			          <option value="Student"></option>
+			          <option value="Employee"></option>
+			          <option value="Retiree"></option>
+			        </datalist>
 
-              <p></p>
+			        <p></p>
 
-              <label for="markSite">Did you like the article:</label>
-              <select id="markSite">
-                <option value="">--Please choose an option--</option>
-                <option value="yes">Yes</option>
-                <option value="no">No</option>
-                <option value="sawBetter">Saw better</option>
-              </select>
-              <li>
-                Do you want to receive the newsletter?
-                <ul class="flex-inner"">
-                  <li>
-                    <input type="checkbox" id="cell" />
-                    <label for="cell"></label>
-                  </li>
-                </ul>
-              </li>
-              <li>
-                <button type="submit">Submit</button>
-                <button type="reset">Reset</button>
-              </li>
-            </ul>
-          </form>
-        </section>
-      </article>
-    </script>
+			        <label for="markSite">Did you like the article:</label>
+			        <select id="markSite">
+			          <option value="">--Please choose an option--</option>
+			          <option value="yes">Yes</option>
+			          <option value="no">No</option>
+			          <option value="sawBetter">Saw better</option>
+			        </select>
+			        <li>
+			          Do you want to receive the newsletter?
+			          <ul class="flex-inner">
+			            <li>
+			              <input type="checkbox" id="cell" />
+			              <label for="cell"></label>
+			            </li>
+			          </ul>
+			        </li>
+			        <li>
+			          <button type="submit">Submit</button>
+			          <button type="reset">Reset</button>
+			        </li>
+			      </ul>
+			    </form>
+			  </section>
+			</article>
+		</script>
 
-    <script id="template-article" type="text/template">
-         <article class="artId">
-             <h3>{{title}}</h3>
-             <p>
-                 by {{author}}
-             </p>
-             {{#imageLink}}
-             <figure>
-                 <img src="{{imageLink}}" alt="article figure" />
-             </figure>
-             {{/imageLink}}
-             <div>{{{content}}}</div>
-             <p>
-                 Keywords:
-                 {{tags}}
-             </p>
+		<script id="template-article" type="text/template">
+			   <article class="artId">
+			       <h3>{{title}}</h3>
+			       <p>
+			           by {{author}}
+			       </p>
+			       {{#imageLink}}
+			       <figure>
+			           <img src="{{imageLink}}" alt="article figure" />
+			       </figure>
+			       {{/imageLink}}
+			       <div>{{{content}}}</div>
+			       <p>
+			           Keywords:
+			           {{tags}}
+			       </p>
 
-             <h5> Comments </h5>
-          <ul id="comment-section">
-              {{#comments}}
-                 		<p>
-       			        by {{author}}
-       			    </p>
+			       <h5> Comments </h5>
+			    <ul id="comment-section">
+			        {{#comments}}
+			           		<p>
+			 			        by {{author}}
+			 			    </p>
 
-              <li>{{{text}}}</li>
-              {{/comments}}
+			        <li>{{{text}}}</li>
+			        {{/comments}}
 
-      	</ul>
-      	<br>
+				</ul>
+				<br>
 
-      	<input type="text" id="comment_author"/>
-      	<br>
-      	<input type="text" id="comment_text"/>
-      	<br>
-      	<button type="button" id="add_comment">
-      		Add comment
-      	</button>
+				<input type="text" id="comment_author"/>
+				<br>
+				<input type="text" id="comment_text"/>
+				<br>
+				<button type="button" id="add_comment">
+					Add comment
+				</button>
 
-      </article>
+			</article>
 
-         <footer class="artMid">
-             <a href="{{backLink}}" class="linkAsButton"><< Back</a>
-             <a href="{{editLink}}" class="linkAsButton">Edit</a>
-             <a href="{{deleteLink}}" class="linkAsButton">Delete</a>
-             <!-- <a href="#top" class="linkAsButton">Up to the menu</a> -->
-         </footer>
-    </script>
+			   <footer class="artMid">
+			       <a href="{{backLink}}" class="linkAsButton"><< Back</a>
+			       <a href="{{editLink}}" class="linkAsButton">Edit</a>
+			       <a href="{{deleteLink}}" class="linkAsButton">Delete</a>
+			       <!-- <a href="#top" class="linkAsButton">Up to the menu</a> -->
+			   </footer>
+		</script>
 
-    <script id="template-article-form" type="text/template">
-        <article>
-            <h2>{{formTitle}}</h2> <br><br>
-            <form id="articleForm">
-                <label for="author">Author:</label>
-                <input type="text" name="author" id="author" value="{{author}}" size="50"
-                       title="Article author, max. length 100 characters."
-                       maxlength="100" placeholder="e.g. Ján Trieska" />
-                <br>
-                <label for="title">Title:</label>
-                <input type="text" name="title" id="title" value="{{title}}" size="50" required
-                       maxlength="100" pattern="\S[\S\s]*" placeholder="e.g. My story."
-                       title="Article title, mandatory item, max. length: 100 characters, the first character must not be a space."  />
-                <br>
-                <label for="imageLink">Image (url):</label>
-                <input type="url" name="imageLink" id="imageLink" value="{{imageLink}}" size="50"
-                       title="Image URL, max. length 100 characters." maxlength="100"/>
-                <br>
-                <label></label>
-                <button type="button" onclick="showFileUpload()">Upload image</button>
+		<script id="template-article-form" type="text/template">
+			  <article>
+			      <h2>{{formTitle}}</h2> <br><br>
+			      <form id="articleForm">
+			          <label for="author">Author:</label>
+			          <input type="text" name="author" id="author" value="{{author}}" size="50"
+			                 title="Article author, max. length 100 characters."
+			                 maxlength="100" placeholder="e.g. Ján Trieska" />
+			          <br>
+			          <label for="title">Title:</label>
+			          <input type="text" name="title" id="title" value="{{title}}" size="50" required
+			                 maxlength="100" pattern="\S[\S\s]*" placeholder="e.g. My story."
+			                 title="Article title, mandatory item, max. length: 100 characters, the first character must not be a space."  />
+			          <br>
+			          <label for="imageLink">Image (url):</label>
+			          <input type="url" name="imageLink" id="imageLink" value="{{imageLink}}" size="50"
+			                 title="Image URL, max. length 100 characters." maxlength="100"/>
+			          <br>
+			          <label></label>
+			          <button type="button" onclick="showFileUpload()">Upload image</button>
 
-                <fieldset id="fsetFileUpload">
-                    <legend>Image Upload</legend>
-                    <input type="file" id="flElm" name="file" accept="image/jpeg, image/png"/>
-                    <br />
-                    <button type="button" onclick="uploadImg('{{urlBase}}')">
-                        Send image to server </button>
-                    <button type="button" onclick="cancelFileUpload()">
-                        Cancel uploading </button>
-                </fieldset>
-
-
-                <br>
-                <label for="content">Article content:</label>
-                <textarea
-                        name="content" id="content" spellcheck="true" lang="sk"
-                        cols="50" rows="20" required
-                        title="Article content, mandatory item, can be plain text or in HTML.">
-                  {{content}}
-                </textarea>
-                <br>
-                <label for="tags">Keywords:</label>
-                <input  type="text" name="tags" id="tags" value="{{tags}}" size="50"
-                        title="Keyword list, comma separated." placeholder="e.g. village, drama" />
-                <br> <br>
-                <button type="reset"> Reset Form </button>
-                <button type="submit"> {{submitBtTitle}} </button>
-
-            </form>
-        </article>
-
-        <footer class="artMid">
-          <a href="{{backLink}}" class="linkAsButton"><< Back</a>
-      </footer>
-    </script>
-
-    <script id="template-insertArticle" type="text/template">
-      <article>
-          <h2>New article</h2>
-          <p>
-              Please, use the form below to create your article.
-          </p>
-          <form id="articleForm">
-            <div class="artMid">
-              <label for="author">Author:</label>
-              <input type="text" name="author" id="author" size="50" title="Autor článku, maximálna dĺžka: 100 znakov (article author, max. length 100 characters)." maxlength="100" placeholder="napr. Ján Trieska" />
-              <br>
-              <label for="title">Title:</label>
-              <input type="text" name="title" id="title" size="50"  maxlength="100" pattern="\S[\S\s]*" required title="Názov článku, povinná položka, maximálna dĺžka: 100 znakov, prvý znak nesmie byť medzera (Article title, mandatory item, max. length: 100 characters, the first character must not be a space)." placeholder="napr. Môj prvý príbeh / e.g. My story." />
-              <br>
-              <label for="imageLink">Image (url):</label>
-              <input type="url" name="imageLink" size="50" title="URL obrázka. Maximálna dĺžka: 100 znakov (image URL, max. length 100 characters)." maxlength="100"/>
-              <br>
-              <label></label><button type="button">Upload image</button>
-
-                  <fieldset>
-                      <legend>Image Upload</legend>
-                      <input type="file" id="flElm" name="file" accept="image/jpeg, image/png"/>
-                      <br />
-                      <button type="button">Send image to server</button>
-                      <button type="button">Cancel uploading</button>
-                  </fieldset>
+			          <fieldset id="fsetFileUpload">
+			              <legend>Image Upload</legend>
+			              <input type="file" id="flElm" name="file" accept="image/jpeg, image/png"/>
+			              <br />
+			              <button type="button" onclick="uploadImg('{{urlBase}}')">
+			                  Send image to server </button>
+			              <button type="button" onclick="cancelFileUpload()">
+			                  Cancel uploading </button>
+			          </fieldset>
 
 
-              <br>
-              <label for="content">Article content:</label>
-              <textarea name="content" id="content" spellcheck="true" lang="sk" cols="50" rows="20" required title="Obsah článku, povinná položka,  môže byť obyčajný text alebo html (Article content, mandatory item, can be plain text or in HTML)."></textarea>
-              <br>
-              <label for="tags">Keywords:</label>
-              <input type="text" name="tags" id="tags" size="50" title="Zoznam kľúčových slov oddelených čiarkou (Keyword list, comma separated)." placeholder="napr. dedina, dráma / e.g. village, drama" />
+			          <br>
+			          <label for="content">Article content:</label>
+			          <textarea
+			                  name="content" id="content" spellcheck="true" lang="sk"
+			                  cols="50" rows="20" required
+			                  title="Article content, mandatory item, can be plain text or in HTML.">
+			            {{content}}
+			          </textarea>
+			          <br>
+			          <label for="tags">Keywords:</label>
+			          <input  type="text" name="tags" id="tags" value="{{tags}}" size="50"
+			                  title="Keyword list, comma separated." placeholder="e.g. village, drama" />
+			          <br> <br>
+			          <button type="reset"> Reset Form </button>
+			          <button type="submit"> {{submitBtTitle}} </button>
 
-              <br>
-              <br>
-              <button type="reset">
-                  Reset
-              </button>
-              <button type="submit">
-                  Add article
-              </button>
+			      </form>
+			  </article>
 
-          </form>
-          <footer  class="menuLink"><a href="#welcome">Back to the menu</a></footer>
-        </div>
-      </article>
-    </script>
+			  <footer class="artMid">
+			    <a href="{{backLink}}" class="linkAsButton"><< Back</a>
+			</footer>
+		</script>
 
-    <h1 id="newID">
-      Informácia o prihlásenom používateľovi / Signed in User Info
-    </h1>
-    <div id="userStatus"></div>
+		<script id="template-insertArticle" type="text/template">
+			<article>
+			    <h2>New article</h2>
+			    <p>
+			        Please, use the form below to create your article.
+			    </p>
+			    <form id="articleForm">
+			      <div class="artMid">
+			        <label for="author">Author:</label>
+			        <input type="text" name="author" id="author" size="50" title="Autor článku, maximálna dĺžka: 100 znakov (article author, max. length 100 characters)." maxlength="100" placeholder="napr. Ján Trieska" />
+			        <br>
+			        <label for="title">Title:</label>
+			        <input type="text" name="title" id="title" size="50"  maxlength="100" pattern="\S[\S\s]*" required title="Názov článku, povinná položka, maximálna dĺžka: 100 znakov, prvý znak nesmie byť medzera (Article title, mandatory item, max. length: 100 characters, the first character must not be a space)." placeholder="napr. Môj prvý príbeh / e.g. My story." />
+			        <br>
+			        <label for="imageLink">Image (url):</label>
+			        <input type="url" id='imageLink' name="imageLink" size="50" title="URL obrázka. Maximálna dĺžka: 100 znakov (image URL, max. length 100 characters)." maxlength="100"/>
+			        <br>
+			        <label></label><button type="button">Upload image</button>
 
-    <script src="js/82GoogleAccessBetter.js"></script>
-    <script
-      src="https://apis.google.com/js/platform.js?onload=startGSingIn"
-      async
-      defer
-    ></script>
-    <!------------------------------------------------------------------------>
-    <!--JavaScript -->
-    <script type="module" src="js/index.js"></script>
-    <script src="js/articleFormsHandler.js"></script>
+			            <fieldset>
+			                <legend>Image Upload</legend>
+			                <input type="file" id="flElm" name="file" accept="image/jpeg, image/png"/>
+			                <br />
+			                <button type="button">Send image to server</button>
+			                <button type="button">Cancel uploading</button>
+			            </fieldset>
 
-    <script src="js/addOpinion.js"></script>
 
-    <h4 class="top">Сreator - Yevhenii</h4>
-    <h4>
-      Email -
-      <a href="mailto:yevhenii.tkachenko@student.tuke.sk" class="mail"
-        >yevhenii.tkachenko@student.tuke.sk</a
-      >
-    </h4>
-    <canvas id="cnv" width="200" height="200"
-      >Sorry, your browser cannot upload this art :(</canvas
-    >
-    <div class="transition">
-      <script>
-        const cnv = document.getElementById("cnv");
-        const ctx = cnv.getContext("2d");
+			        <br>
+			        <label for="content">Article content:</label>
+			        <textarea name="content" id="content" spellcheck="true" lang="sk" cols="50" rows="20" required title="Obsah článku, povinná položka,  môže byť obyčajný text alebo html (Article content, mandatory item, can be plain text or in HTML)."></textarea>
+			        <br>
+			        <label for="tags">Keywords:</label>
+			        <input type="text" name="tags" id="tags" size="50" title="Zoznam kľúčových slov oddelených čiarkou (Keyword list, comma separated)." placeholder="napr. dedina, dráma / e.g. village, drama" />
 
-        ctx.lineWidth = 10;
-        ctx.lineJoin = "round";
-        ctx.beginPath();
-        ctx.strokeStyle = "red";
-        ctx.fillStyle = "red";
-        ctx.moveTo(20, 20);
-        ctx.lineTo(20, 80);
-        ctx.lineTo(160, 80);
-        ctx.lineTo(160, 20);
-        ctx.closePath();
-        ctx.fill();
-        ctx.stroke();
-        ctx.beginPath();
-        ctx.fillStyle = "white";
-        ctx.moveTo(80, 50);
-        ctx.lineTo(95, 65);
-        ctx.lineTo(95, 35);
-        ctx.fill();
-      </script>
-    </div>
+			        <br>
+			        <br>
+			        <button type="reset">
+			            Reset
+			        </button>
+			        <button type="submit">
+			            Add article
+			        </button>
 
-    <!-- <script>
+			    </form>
+			    <footer  class="menuLink"><a href="#welcome">Back to the menu</a></footer>
+			  </div>
+			</article>
+		</script>
+
+		<h1 id="newID">Informácia o prihlásenom používateľovi / Signed in User Info</h1>
+		<div id="userStatus"></div>
+
+		<script src="js/82GoogleAccessBetter.js"></script>
+		<script
+			src="https://apis.google.com/js/platform.js?onload=startGSingIn"
+			async
+			defer
+		></script>
+		<!------------------------------------------------------------------------>
+		<!--JavaScript -->
+		<script type="module" src="js/index.js"></script>
+		<script src="js/articleFormsHandler.js"></script>
+
+		<script src="js/addOpinion.js"></script>
+
+		<h4 class="top">Сreator - Yevhenii</h4>
+		<h4>
+			Email -
+			<a href="mailto:yevhenii.tkachenko@student.tuke.sk" class="mail"
+				>yevhenii.tkachenko@student.tuke.sk</a
+			>
+		</h4>
+		<canvas id="cnv" width="200" height="200"
+			>Sorry, your browser cannot upload this art :(</canvas
+		>
+		<div class="transition">
+			<script>
+				const cnv = document.getElementById('cnv');
+				const ctx = cnv.getContext('2d');
+
+				ctx.lineWidth = 10;
+				ctx.lineJoin = 'round';
+				ctx.beginPath();
+				ctx.strokeStyle = 'red';
+				ctx.fillStyle = 'red';
+				ctx.moveTo(20, 20);
+				ctx.lineTo(20, 80);
+				ctx.lineTo(160, 80);
+				ctx.lineTo(160, 20);
+				ctx.closePath();
+				ctx.fill();
+				ctx.stroke();
+				ctx.beginPath();
+				ctx.fillStyle = 'white';
+				ctx.moveTo(80, 50);
+				ctx.lineTo(95, 65);
+				ctx.lineTo(95, 35);
+				ctx.fill();
+			</script>
+		</div>
+
+		<!-- <script>
       function onSignIn(googleUser) {
         // Useful data for your client-side scripts:
         var profile = googleUser.getBasicProfile();
@@ -419,5 +417,5 @@
         console.log("ID Token: " + id_token);
       }
     </script> -->
-  </body>
+	</body>
 </html>

@@ -27,9 +27,9 @@ export default class articleFormsHandler {
 		const artForm = document.getElementById(formElementId);
 		this.formElements = artForm.elements;
 
-		this.formElements.namedItem('btShowFileUpload').onclick = () => this.showFileUpload();
-		this.formElements.namedItem('btFileUpload').onclick = () => this.uploadImg();
-		this.formElements.namedItem('btCancelFileUpload').onclick = () => this.cancelFileUpload();
+		// this.formElements.namedItem('btShowFileUpload').onclick = () => this.showFileUpload();
+		// this.formElements.namedItem('btFileUpload').onclick = () => this.uploadImg();
+		// this.formElements.namedItem('btCancelFileUpload').onclick = () => this.cancelFileUpload();
 
 		if (articleId >= 0) {
 			//article edit (update)

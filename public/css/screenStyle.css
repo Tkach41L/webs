@@ -496,7 +496,7 @@ div {
 input[type="checkbox"] {
   display: none;
 }
-input[type="checkbox"]:checked ~ .text {
+input[type="checkbox"]:checked ~ .comm {
   display: block !important;
 }
 input[type="checkbox"]:checked ~ label {

@@ -441,6 +441,12 @@ div {
   padding: 2%;
 }
 
+#comment-section {
+  padding-top: 2%;
+  padding-bottom: 2%;
+  background: #f0f0f0;
+}
+
 #imag {
   width: 150px;
   height: 110px;
@@ -491,6 +497,8 @@ div {
 
 .comm {
   display: none;
+  text-align: left;
+  margin-left: 2%;
 }
 
 input[type="checkbox"] {
@@ -517,9 +525,14 @@ input[type="checkbox"]:checked ~ label {
 
 input[type="tex"] {
   padding: 10px;
+  width: 15%;
   border: 0;
   box-shadow: 0 0 15px 4px rgba(0, 0, 0, 0.267);
   border-radius: 10px;
+}
+
+#nc {
+  text-align: left;
 }
 
 #add_comment {
@@ -532,6 +545,11 @@ input[type="tex"] {
   padding: 0.5em 1em;
   color: #ffffff;
   background-color: #9eb4ff;
+}
+
+.leftComments {
+  text-align: left;
+  margin-left: 5%;
 }
 
 /* #comment_author {

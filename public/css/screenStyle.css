@@ -563,9 +563,9 @@ input[type="tex"] {
   padding: 10px;
 } */
 
-.fixed {
+/* .fixed {
   position: fixed;
-}
+} */
 
 @media (max-width: 800px) {
   body {

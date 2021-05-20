@@ -524,7 +524,7 @@ input[type="checkbox"]:checked ~ label {
   background-color: #9eb4ff;
 }
 
-.border-bottom-input {
+.comment_author {
   border: 0;
   border-bottom: 1px solid #eee;
 }

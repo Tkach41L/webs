@@ -501,13 +501,13 @@ div {
   margin-left: 2%;
 }
 
-input[type="checkbox"] {
+input[type="checkbx"] {
   display: none;
 }
-input[type="checkbox"]:checked ~ .comm {
+input[type="checkbo"]:checked ~ .comm {
   display: block !important;
 }
-input[type="checkbox"]:checked ~ label {
+input[type="checkbo"]:checked ~ label {
   display: none;
 }
 

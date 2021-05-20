@@ -501,15 +501,26 @@ div {
   margin-left: 2%;
 }
 
-input[type="checkbx"] {
+#btn {
   display: none;
 }
-input[type="checkbo"]:checked ~ .comm {
+
+input[type="checkbox"]:checked ~ .comm {
   display: block !important;
 }
-input[type="checkbo"]:checked ~ label {
+
+#btn:checked ~ label {
   display: none;
 }
+/* input[type="checkbox"] {
+  display: none;
+}
+input[type="checkbox"]:checked ~ .comm {
+  display: block !important;
+}
+input[type="checkbox"]:checked ~ label {
+  display: none;
+} */
 
 .btnn {
   display: inline-block;

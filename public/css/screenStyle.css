@@ -524,6 +524,10 @@ input[type="checkbox"]:checked ~ label {
   background-color: #9eb4ff;
 }
 
+input[type="tex"] {
+  padding: 10px;
+}
+
 #comment_author {
   border: 0;
   border-bottom: 1px solid rgb(140, 180, 255);

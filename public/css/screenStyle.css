@@ -504,34 +504,41 @@ input[type="checkbox"]:checked ~ label {
 }
 
 .btnn {
-  /* по-умолчанию для <button>, но пригодится для <a> */
   display: inline-block;
   text-align: center;
   text-decoration: none;
-
-  /* создаём маленькие отступы, если кнопки перенесутся на две строки */
   margin: 2px 0;
-
-  /* невидимая граница (понадобится для цвета при наведении/фокусе) */
   border: solid 1px transparent;
   border-radius: 4px;
-
-  /* размер строится из текста и отступов (без width/height) */
   padding: 0.5em 1em;
-
-  /* убедитесь, что достаточно контраста! */
   color: #ffffff;
   background-color: #9eb4ff;
 }
 
 input[type="tex"] {
   padding: 10px;
+  border: 0;
+  box-shadow: 0 0 15px 4px rgba(0, 0, 0, 0.267);
+  border-radius: 10px;
 }
 
-#comment_author {
+#add_comment {
+  display: inline-block;
+  text-align: center;
+  text-decoration: none;
+  margin: 2px 0;
+  border: solid 1px transparent;
+  border-radius: 4px;
+  padding: 0.5em 1em;
+  color: #ffffff;
+  background-color: #9eb4ff;
+}
+
+/* #comment_author {
   border: 0;
   border-bottom: 1px solid rgb(140, 180, 255);
-}
+  padding: 10px;
+} */
 
 @media (max-width: 800px) {
   body {

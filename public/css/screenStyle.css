@@ -442,8 +442,8 @@ div {
 }
 
 #comment-section {
-  padding-top: 2%;
-  padding-bottom: 2%;
+  /* padding-top: 2%;
+  padding-bottom: 2%; */
   background: #f0f0f0;
 }
 
@@ -521,6 +521,7 @@ input[type="checkbox"]:checked ~ label {
   padding: 0.5em 1em;
   color: #ffffff;
   background-color: #9eb4ff;
+  margin-left: 1%;
 }
 
 input[type="tex"] {
@@ -552,6 +553,10 @@ input[type="tex"] {
   margin-left: 5%;
 }
 
+.littleTop {
+  padding-top: 2%;
+  padding-bottom: 2%;
+}
 /* #comment_author {
   border: 0;
   border-bottom: 1px solid rgb(140, 180, 255);

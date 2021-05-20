@@ -195,7 +195,7 @@
     </script>
 
     <script id="template-article" type="text/template">
-                                 <article>
+                                 <article class="artMid">
 
                                      <h3>{{title}}</h3>
                                      <p>
@@ -212,6 +212,7 @@
                                          {{tags}}
                                      </p>
             				<h3> Comments </h3>
+      	<nav class="littleTop">
                                   <ul id="comment-section">
 
                                       {{#comments}}
@@ -221,7 +222,7 @@
 
                                       <li>{{{text}}}</li>
                                       {{/comments}}
-
+      				</nav>
                               	</ul>
                               	<br>
                      <!-- ---------------------- -->

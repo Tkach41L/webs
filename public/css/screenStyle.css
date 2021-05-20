@@ -524,9 +524,9 @@ input[type="checkbox"]:checked ~ label {
   background-color: #9eb4ff;
 }
 
-.comment_author {
+#comment_author {
   border: 0;
-  border-bottom: 1px solid #eee;
+  border-bottom: 1px solid rgb(140, 180, 255);
 }
 
 @media (max-width: 800px) {
